@@ -14,6 +14,7 @@
       },
       "volumes": [
         {
+          "name": "postgres_data",
           "type": "bind",
           "hostPath": "{{DATA_DIR}}/data",
           "containerPath": "/var/lib/postgresql/data"
