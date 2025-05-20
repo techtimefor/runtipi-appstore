@@ -15,8 +15,8 @@
       "volumes": [
         {
           "type": "bind",
-          "source": "{{DATA_DIR}}/data",
-          "target": "/var/lib/postgresql/data"
+          "hostPath": "{{DATA_DIR}}/data",
+          "containerPath": "/var/lib/postgresql/data"
         }
       ],
       "restart": "unless-stopped"
