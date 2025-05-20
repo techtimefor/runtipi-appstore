@@ -1,0 +1,68 @@
+{
+  "name": "PostgreSQL",
+  "available": true,
+  "port": 5432,
+  "exposable": false,
+  "no_gui": true,
+  "dynamic_config": true,
+  "id": "postgres",
+  "description": "PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development.",
+  "tipi_version": 4,
+  "version": "17.5",
+  "categories": ["development", "data"],
+  "short_desc": "Advanced open source database",
+  "author": "PostgreSQL",
+  "source": "https://github.com/postgres/postgres",
+  "website": "https://www.postgresql.org/",
+  "form_fields": [
+    {
+      "name": "POSTGRES_USER",
+      "label": "Admin Username",
+      "type": "text",
+      "required": true,
+      "default": "postgres",
+      "min": 1,
+      "max": 63
+    },
+    {
+      "name": "POSTGRES_PASSWORD",
+      "label": "Admin Password",
+      "type": "password",
+      "required": true,
+      "min": 8,
+      "max": 100
+    },
+    {
+      "name": "POSTGRES_DB",
+      "label": "Database Name",
+      "type": "text",
+      "required": true,
+      "default": "postgres",
+      "min": 1,
+      "max": 63
+    },
+    {
+      "name": "POSTGRES_INITDB_ARGS",
+      "label": "InitDB Arguments",
+      "type": "text",
+      "required": false,
+      "default": "--auth-host=scram-sha-256"
+    },
+    {
+      "name": "POSTGRES_HOST_AUTH_METHOD",
+      "label": "Host Authentication Method",
+      "type": "select",
+      "required": false,
+      "default": "scram-sha-256",
+      "options": [
+        "trust",
+        "md5",
+        "scram-sha-256",
+        "password"
+      ]
+    }
+  ],
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1710000000000,
+  "updated_at": 1710000000000
+} 
