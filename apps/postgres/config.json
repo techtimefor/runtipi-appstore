@@ -50,16 +50,28 @@
     },
     {
       "label": "Host Authentication Method",
-      "type": "select",
+      "type": "text",
       "required": false,
       "default": "scram-sha-256",
+      "env_variable": "POSTGRES_HOST_AUTH_METHOD",
       "options": [
-        "trust",
-        "md5",
-        "scram-sha-256",
-        "password"
-      ],
-      "env_variable": "POSTGRES_HOST_AUTH_METHOD"
+        {
+          "label": "Trust",
+          "value": "trust"
+        },
+        {
+          "label": "MD5",
+          "value": "md5"
+        },
+        {
+          "label": "SCRAM-SHA-256",
+          "value": "scram-sha-256"
+        },
+        {
+          "label": "Password",
+          "value": "password"
+        }
+      ]
     }
   ],
   "supported_architectures": ["arm64", "amd64"],
