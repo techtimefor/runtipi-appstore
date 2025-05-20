@@ -16,40 +16,39 @@
   "website": "https://www.postgresql.org/",
   "form_fields": [
     {
-      "name": "POSTGRES_USER",
       "label": "Admin Username",
       "type": "text",
       "required": true,
       "default": "postgres",
       "min": 1,
-      "max": 63
+      "max": 63,
+      "env_variable": "POSTGRES_USER"
     },
     {
-      "name": "POSTGRES_PASSWORD",
       "label": "Admin Password",
       "type": "password",
       "required": true,
       "min": 8,
-      "max": 100
+      "max": 100,
+      "env_variable": "POSTGRES_PASSWORD"
     },
     {
-      "name": "POSTGRES_DB",
       "label": "Database Name",
       "type": "text",
       "required": true,
       "default": "postgres",
       "min": 1,
-      "max": 63
+      "max": 63,
+      "env_variable": "POSTGRES_DB"
     },
     {
-      "name": "POSTGRES_INITDB_ARGS",
       "label": "InitDB Arguments",
       "type": "text",
       "required": false,
-      "default": "--auth-host=scram-sha-256"
+      "default": "--auth-host=scram-sha-256",
+      "env_variable": "POSTGRES_INITDB_ARGS"
     },
     {
-      "name": "POSTGRES_HOST_AUTH_METHOD",
       "label": "Host Authentication Method",
       "type": "select",
       "required": false,
@@ -59,7 +58,8 @@
         "md5",
         "scram-sha-256",
         "password"
-      ]
+      ],
+      "env_variable": "POSTGRES_HOST_AUTH_METHOD"
     }
   ],
   "supported_architectures": ["arm64", "amd64"],
