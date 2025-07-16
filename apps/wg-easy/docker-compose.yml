@@ -13,6 +13,7 @@ services:
       - PASSWORD_HASH=${WIREGUARD_PASSWORD_HASH}
       - WG_DEFAULT_DNS=${WIREGUARD_DNS:-8.8.8.8}
       - WG_ALLOWED_IPS=0.0.0.0/0, ::/0
+      - INSECURE=true
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
