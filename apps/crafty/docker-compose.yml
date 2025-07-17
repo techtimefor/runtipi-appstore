@@ -4,13 +4,9 @@ services:
     container_name: crafty
     image: registry.gitlab.com/crafty-controller/crafty-4:4.4.11
     restart: unless-stopped
+    network_mode: "host"
     environment:
       - TZ=${TZ}
-    ports:
-      - ${APP_PORT}:8443
-      - '8123:8123'
-      - 19132:19132/udp
-      - 25500-25600:25500-25600
     networks:
       - tipi_main_network
     volumes:
