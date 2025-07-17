@@ -3,6 +3,7 @@
   "services": [
     {
       "image": "registry.gitlab.com/crafty-controller/crafty-4:4.4.11",
+      "networkMode": "host",
       "name": "crafty",
       "internalPort": 8443,
       "isMain": true,
