@@ -22,7 +22,8 @@
       "default": 8456,
       "description": "Port for Crafty web interface",
       "label": "Crafty Web UI Port",
-      "required": false
+      "required": false,
+      "env_variable": "CRAFTY_PORT"
     }
   ],
   "supported_architectures": ["arm64", "amd64"],
