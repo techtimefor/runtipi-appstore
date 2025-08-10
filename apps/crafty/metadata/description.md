@@ -1,4 +1,8 @@
-# Crafty Controller 4.2.2
+# Crafty Controller 4.4.11
+
+## Note
+
+> This is a version of Crafty that makes it super easy to expose to tailscale and others your Minecraft Server thats running through crafty.
 
 Python based Control Panel for your Minecraft Server
 
