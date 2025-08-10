@@ -5,7 +5,7 @@
       "image": "registry.gitlab.com/crafty-controller/crafty-4:4.4.11",
       "networkMode": "host",
       "name": "crafty",
-      "internalPort": 8443,
+      "internalPort": "${crafty_port}",
       "isMain": true,
       "volumes": [
         {
@@ -30,7 +30,8 @@
         }
       ],
       "environment": {
-        "TZ": "${TZ}"
+        "TZ": "${TZ}",
+        "CRAFTY_PORT": "${crafty_port}"
       },
       "addPorts": [
         {
@@ -49,7 +50,8 @@
       ],
       "extraLabels": {
         "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.server.scheme": "https",
-        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.serverstransport": "insecuretransport@file"
+        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.serverstransport": "insecuretransport@file",
+        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.server.port": "${crafty_port}"
       }
     }
   ]
