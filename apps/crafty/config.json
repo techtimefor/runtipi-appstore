@@ -11,12 +11,21 @@
   "version": "4.4.11",
   "categories": ["gaming"],
   "description": "Crafty 4 is the next iteration of our Minecraft Server Wrapper / Controller / Launcher.",
-  "short_desc": "Python based Control Panel for your Minecraft Server",
+  "short_desc": "Python-based Control Panel for your Minecraft Server",
   "author": "Crafty Controller",
   "source": "https://gitlab.com/crafty-controller/crafty-4",
   "website": "https://craftycontrol.com/",
-  "form_fields": [],
+  "form_fields": [
+    {
+      "id": "crafty_port",
+      "type": "number",
+      "default": 8456,
+      "description": "Port for Crafty web interface",
+      "label": "Crafty Web UI Port",
+      "required": false
+    }
+  ],
   "supported_architectures": ["arm64", "amd64"],
   "created_at": 1691943801422,
-  "updated_at": 1752087905461
+  "updated_at": 1754781840000
 }
