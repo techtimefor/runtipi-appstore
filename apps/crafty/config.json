@@ -15,17 +15,7 @@
   "author": "Crafty Controller",
   "source": "https://gitlab.com/crafty-controller/crafty-4",
   "website": "https://craftycontrol.com/",
-  "form_fields": [
-    {
-      "id": "crafty_port",
-      "type": "number",
-      "default": 8456,
-      "description": "Port for Crafty web interface",
-      "label": "Crafty Web UI Port",
-      "required": false,
-      "env_variable": "CRAFTY_PORT"
-    }
-  ],
+  "form_fields": [],
   "supported_architectures": ["arm64", "amd64"],
   "created_at": 1691943801422,
   "updated_at": 1754781840000
