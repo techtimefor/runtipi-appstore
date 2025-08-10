@@ -3,12 +3,19 @@
 CONFIG_FILE="/crafty/app/config/config.yml"
 PORT="${CRAFTY_PORT:-8443}"
 
-# Patch the config file
-if grep -q "^port:" "$CONFIG_FILE"; then
-  sed -i "s/^port:.*/port: ${PORT}/" "$CONFIG_FILE"
+echo "🛠️ Setting Crafty web UI port to ${PORT}"
+
+# Patch the config file safely
+if [ -f "$CONFIG_FILE" ]; then
+  if grep -q "^port:" "$CONFIG_FILE"; then
+    sed -i "s/^port:.*/port: ${PORT}/" "$CONFIG_FILE"
+  else
+    echo "port: ${PORT}" >> "$CONFIG_FILE"
+  fi
 else
-  echo "port: ${PORT}" >> "$CONFIG_FILE"
+  echo "⚠️ Config file not found at $CONFIG_FILE. Creating new one..."
+  echo "port: ${PORT}" > "$CONFIG_FILE"
 fi
 
-# Start Crafty
+echo "🚀 Starting Crafty..."
 exec python3 crafty.py
