@@ -1,0 +1,14 @@
+#!/bin/bash
+
+CONFIG_FILE="/crafty/app/config/config.yml"
+PORT="${CRAFTY_PORT:-8443}"
+
+# Patch the config file
+if grep -q "^port:" "$CONFIG_FILE"; then
+  sed -i "s/^port:.*/port: ${PORT}/" "$CONFIG_FILE"
+else
+  echo "port: ${PORT}" >> "$CONFIG_FILE"
+fi
+
+# Start Crafty
+exec python3 crafty.py
