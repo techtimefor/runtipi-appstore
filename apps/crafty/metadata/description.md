@@ -1,4 +1,4 @@
-# Crafty Controller 4.4.11
+# Crafty Controller 4.5.3
 
 Python based Control Panel for your Minecraft Server
 
