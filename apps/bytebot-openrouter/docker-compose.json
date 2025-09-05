@@ -1,0 +1,87 @@
+{
+  "services": [
+    {
+      "name": "bytebot-ui",
+      "image": "ghcr.io/bytebot-ai/bytebot-ui:edge",
+      "isMain": true,
+      "internalPort": 9992,
+      "environment": {
+        "NODE_ENV": "production",
+        "BYTEBOT_AGENT_BASE_URL": "http://bytebot-agent:9991",
+        "BYTEBOT_DESKTOP_VNC_URL": "http://bytebot-desktop:9990/websockify",
+        "TZ": "${TZ}"
+      },
+      "dependsOn": ["bytebot-agent"]
+    },
+    {
+      "name": "bytebot-agent",
+      "image": "ghcr.io/bytebot-ai/bytebot-agent:edge",
+      "environment": {
+        "DATABASE_URL": "postgresql://postgres:postgres@postgres:5432/bytebotdb",
+        "BYTEBOT_DESKTOP_BASE_URL": "http://bytebot-desktop:9990",
+        "BYTEBOT_LLM_PROXY_URL": "http://bytebot-llm-proxy:4000",
+        "TZ": "${TZ}"
+      },
+      "dependsOn": ["postgres", "bytebot-desktop", "bytebot-llm-proxy"],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/agent",
+          "containerPath": "/app/data"
+        }
+      ]
+    },
+    {
+      "name": "bytebot-desktop",
+      "image": "ghcr.io/bytebot-ai/bytebot-desktop:edge",
+      "shm_size": "2g",
+      "capAdd": ["SYS_ADMIN"],
+      "securityOpt": ["apparmor:unconfined"],
+      "hostname": "computer",
+      "environment": {
+        "DISPLAY": ":0",
+        "TZ": "${TZ}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/desktop",
+          "containerPath": "/home/desktop/.config"
+        }
+      ]
+    },
+    {
+      "name": "bytebot-llm-proxy",
+      "image": "ghcr.io/bytebot-ai/bytebot-llm-proxy:edge",
+      "environment": {
+        "OPENROUTER_API_KEY": "${BYTEBOT_OPENROUTER_API_KEY}",
+        "TZ": "${TZ}",
+        "LITELLM_CONFIG": "/app/litellm-config.yaml"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/config/litellm-config.yaml",
+          "containerPath": "/app/litellm-config.yaml"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/logs/llm-proxy",
+          "containerPath": "/app/logs"
+        }
+      ]
+    },
+    {
+      "name": "postgres",
+      "image": "postgres:16-alpine",
+      "environment": {
+        "POSTGRES_PASSWORD": "postgres",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_DB": "bytebotdb",
+        "TZ": "${TZ}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/postgres",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ]
+    }
+  ]
+}

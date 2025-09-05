@@ -1,0 +1,36 @@
+{
+  "tipi_version": 4,
+  "name": "Bytebot (OpenRouter)",
+  "port": 9992,
+  "available": true,
+  "version": "edge",
+  "id": "bytebot",
+  "description": "Bytebot is an open-source AI desktop agent that provides a complete virtual desktop environment where AI can autonomously complete complex tasks across multiple applications.",
+  "short_desc": "AI desktop agent",
+  "author": "bytebot-ai",
+  "source": "https://github.com/bytebot-ai/bytebot",
+  "website": "https://bytebot.ai",
+  "exposable": true,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "password",
+      "label": "OpenRouter API Key",
+      "hint": "Required for AI model access. Sign up at https://openrouter.ai",
+      "required": true,
+      "env_variable": "BYTEBOT_OPENROUTER_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "Timezone",
+      "hint": "Set your preferred timezone, e.g. Europe/Amsterdam",
+      "required": false,
+      "env_variable": "TZ",
+      "default": "UTC"
+    }
+  ],
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1725497200000,
+  "updated_at": 1725497200000,
+  "categories": ["ai", "automation"]
+}
