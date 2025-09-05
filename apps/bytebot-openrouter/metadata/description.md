@@ -1,5 +1,8 @@
 # Bytebot (OpenRouter)
 
+## WARNING: This app is not installable due to bugs that need to be ressolved, sorry for the inconvenience!
+
+
 Bytebot is an open-source AI desktop agent that gives AI its own computer to autonomously complete complex tasks across applications, websites, and documents.
 
 ---
