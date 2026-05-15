@@ -1,0 +1,20 @@
+{
+  "$schema": "../app-schema.json",
+  "id": "crafty",
+  "name": "Crafty",
+  "version": "4.10.4",
+  "description": "Crafty 4 is the next iteration of our Minecraft Server Wrapper / Controller / Launcher.",
+  "author": "Crafty Controller",
+  "categories": ["gaming"],
+  "port": 8456,
+  "composeFile": "docker-compose.json",
+  "current": "docker-compose.json",
+  "template": "docker-compose.json",
+  "variables": [
+    {
+      "key": "PORT",
+      "description": "Crafty Web UI Port",
+      "default": "8456"
+    }
+  ]
+}
