@@ -18,10 +18,10 @@
         { "hostPath": "${APP_DATA_DIR}/data/import", "containerPath": "/crafty/import" }
       ],
 
-      "environment": {
-        "TZ": "${TZ}",
-        "PORT": "${PORT}"
-      },
+      "environment": [
+        { "key": "TZ", "value": "${TZ}" },
+        { "key": "PORT", "value": "${PORT}" }
+      ],
 
       "addPorts": [
         { "containerPort": 8123, "hostPort": 8123 },
