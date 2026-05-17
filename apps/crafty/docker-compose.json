@@ -1,6 +1,4 @@
 {
-  "$schema": "../dynamic-compose-schema.json",
-
   "services": [
     {
       "image": "registry.gitlab.com/crafty-controller/crafty-4:4.10.4",
