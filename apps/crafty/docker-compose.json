@@ -51,7 +51,7 @@
       "extraLabels": {
         "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.server.scheme": "https",
         "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.serverstransport": "insecuretransport@file",
-        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.server.port": "${PORT}",
+        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.server.port": "${PORT}"
       }
     }
   ]
