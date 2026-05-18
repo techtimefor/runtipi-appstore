@@ -28,16 +28,10 @@
           "containerPath": "/crafty/import"
         }
       ],
-      "environment": [
-        {
-          "key": "TZ",
-          "value": "${TZ}"
-        },
-        {
-          "key": "PORT",
-          "value": "${PORT}"
-        }
-      ],
+"environment": {
+        "TZ": "${TZ}",
+        "PORT": "${PORT}"
+      },
       "addPorts": [
         {
           "containerPort": 8123,
