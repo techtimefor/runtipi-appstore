@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     network_mode: "host"
     environment:
-      - TZ=${TZ}
+    TZ: ${TZ}
     volumes:
       - ${APP_DATA_DIR}/data/backups:/crafty/backups
       - ${APP_DATA_DIR}/data/logs:/crafty/logs
