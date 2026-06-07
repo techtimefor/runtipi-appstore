@@ -4,47 +4,52 @@
     {
       "name": "crafty",
       "image": "registry.gitlab.com/crafty-controller/crafty-4:4.10.4",
+      "internalPort": 8443,
+      "isMain": true,
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/backups",
-          "containerPath": "/crafty/backups",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/crafty/backups"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/logs",
-          "containerPath": "/crafty/logs",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/crafty/logs"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/servers",
-          "containerPath": "/crafty/servers",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/crafty/servers"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/config",
-          "containerPath": "/crafty/app/config",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/crafty/app/config"
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/import",
-          "containerPath": "/crafty/import",
-          "readOnly": false,
-          "shared": false,
-          "private": false
+          "containerPath": "/crafty/import"
         }
       ],
-      "networkMode": "host",
-      "isMain": true,
+      "environment": {
+        "TZ": "${TZ}"
+      },
+      "addPorts": [
+        {
+          "containerPort": 8123,
+          "hostPort": 8123
+        },
+        {
+          "containerPort": 19132,
+          "hostPort": 19132,
+          "udp": true
+        },
+        {
+          "containerPort": "25500-25600",
+          "hostPort": "25500-25600"
+        }
+      ],
       "extraLabels": {
-        "runtipi.managed": "true"
+        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.server.scheme": "https",
+        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.serverstransport": "insecuretransport@file",
+        "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto": "https"
       }
     }
   ]
