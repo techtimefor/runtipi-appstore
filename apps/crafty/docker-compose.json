@@ -4,12 +4,6 @@
     {
       "name": "crafty",
       "image": "registry.gitlab.com/crafty-controller/crafty-4:4.10.4",
-      "environment": [
-        {
-          "key": "TZ",
-          "value": "${TZ}"
-        }
-      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/backups",
