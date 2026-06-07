@@ -50,7 +50,7 @@
       "networkMode": "host",
       "isMain": true,
       "extraLabels": {
-        "runtipi.managed": true
+        "runtipi.managed": "true"
       }
     }
   ]
