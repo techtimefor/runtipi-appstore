@@ -1,57 +1,56 @@
 {
-  "$schema": "../dynamic-compose-schema.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "image": "registry.gitlab.com/crafty-controller/crafty-4:4.10.4",
-      "networkMode": "host",
       "name": "crafty",
-      "internalPort": "${PORT}",
-      "isMain": true,
+      "image": "registry.gitlab.com/crafty-controller/crafty-4:4.10.4",
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/backups",
-          "containerPath": "/crafty/backups"
+          "containerPath": "/crafty/backups",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/logs",
-          "containerPath": "/crafty/logs"
+          "containerPath": "/crafty/logs",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/servers",
-          "containerPath": "/crafty/servers"
+          "containerPath": "/crafty/servers",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/config",
-          "containerPath": "/crafty/app/config"
+          "containerPath": "/crafty/app/config",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
           "hostPath": "${APP_DATA_DIR}/data/import",
-          "containerPath": "/crafty/import"
+          "containerPath": "/crafty/import",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         }
       ],
-"environment": {
-        "TZ": "${TZ}",
-        "PORT": "${PORT}"
-      },
-      "addPorts": [
-        {
-          "containerPort": 8123,
-          "hostPort": 8123
-        },
-        {
-          "containerPort": 19132,
-          "hostPort": 19132,
-          "udp": true
-        },
-        {
-          "hostPort": "25500-25600",
-          "containerPort": "25500-25600"
-        }
-      ],
+      "networkMode": "host",
+      "isMain": true,
       "extraLabels": {
-        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.server.scheme": "https",
-        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.serverstransport": "insecuretransport@file",
-        "traefik.http.services.{{RUNTIPI_APP_ID}}.loadbalancer.server.port": "${PORT}"
+        "runtipi.managed": true
       }
     }
   ]
